@@ -26,7 +26,6 @@ function Homepage() {
       .get(url)
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +33,7 @@ function Homepage() {
   }, []);
   return (
     <>
-      <TableContainer w={"100vw"}>
+      <TableContainer w={"100vw"} display="flex">
         <Table variant="simple">
           <Thead>
             <Tr>
