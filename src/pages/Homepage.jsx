@@ -15,6 +15,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import millify from "millify";
+import { Link } from "react-router-dom";
+import CoinDetails from "./CoinDetails";
 
 function Homepage() {
   const [data, setData] = useState([]);
@@ -26,6 +28,7 @@ function Homepage() {
       .get(url)
       .then((response) => {
         setData(response.data);
+        console.log;
       })
       .catch((error) => {
         console.log(error);
@@ -56,18 +59,20 @@ function Homepage() {
           </Thead>
           <Tbody>
             {data.map((d) => (
-              <Tr key={d.market_cap_rank}>
-                <Td>{d.market_cap_rank}</Td>
+              <Link to={`/${d.id}`} key={d.market_cap_rank}>
+                <Tr>
+                  <Td>{d.market_cap_rank}</Td>
 
-                <Td display="flex">
-                  <img src={d.image} width={20} />
-                  {d.name}
-                </Td>
+                  <Td display="flex">
+                    <img src={d.image} width={20} />
+                    {d.name}
+                  </Td>
 
-                <Td>$ {millify(d.high_24h)}</Td>
-                <Td>${millify(d.current_price)}</Td>
-                <Td>${millify(d.market_cap)}</Td>
-              </Tr>
+                  <Td>$ {millify(d.high_24h)}</Td>
+                  <Td>${millify(d.current_price)}</Td>
+                  <Td>${millify(d.market_cap)}</Td>
+                </Tr>
+              </Link>
             ))}
           </Tbody>
         </Table>
