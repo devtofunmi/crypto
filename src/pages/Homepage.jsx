@@ -5,6 +5,7 @@ import { useState } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
 import CoinDetails from "./CoinDetails";
+import "../App.css";
 
 function Homepage() {
   const [data, setData] = useState([]);
@@ -23,38 +24,36 @@ function Homepage() {
       });
   }, []);
   return (
-    <>
+    <div className="container">
       <div>
-        <table>
-          <tr>
-            <th>#</th>
-            <th>Coin</th>
-            <th>Price</th>
-            <th>24hr</th>
-            <th>Mkt Cap</th>
-          </tr>
+        <div className="heading">
+          <p>#</p>
+          <p>Coin</p>
+          <p>Price</p>
+          <p>24hr</p>
+          <p>Mkt Cap</p>
+        </div>
 
-          <tr>
+        <div className="coin-row">
+          <div>
             {data.map((d) => (
               <Link to={`/${d.id}`} key={d.market_cap_rank}>
-                <tr>
-                  <td>{d.market_cap_rank}</td>
+                <p>{d.market_cap_rank}</p>
 
-                  <td display="flex">
-                    <img src={d.image} width={20} />
-                    {d.name}
-                  </td>
+                <p>
+                  <img src={d.image} width={20} />
+                  {d.name}
+                </p>
 
-                  <td>$ {millify(d.high_24h)}</td>
-                  <td>${millify(d.current_price)}</td>
-                  <td>${millify(d.market_cap)}</td>
-                </tr>
+                <p>$ {millify(d.high_24h)}</p>
+                <p>${millify(d.current_price)}</p>
+                <p>${millify(d.market_cap)}</p>
               </Link>
             ))}
-          </tr>
-        </table>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
