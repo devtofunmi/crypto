@@ -1,15 +1,3 @@
-import {
-  Box,
-  Flex,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
@@ -36,47 +24,36 @@ function Homepage() {
   }, []);
   return (
     <>
-      <TableContainer w={"100vw"} display="flex">
-        <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th color="black" fontSize={12}>
-                #
-              </Th>
-              <Th color="black" fontSize={12}>
-                Coin
-              </Th>
-              <Th color="black" fontSize={12}>
-                Price
-              </Th>
-              <Th color="black" fontSize={12}>
-                24hr
-              </Th>
-              <Th color="black" fontSize={12}>
-                Mkt Cap
-              </Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+      <div>
+        <table>
+          <tr>
+            <th>#</th>
+            <th>Coin</th>
+            <th>Price</th>
+            <th>24hr</th>
+            <th>Mkt Cap</th>
+          </tr>
+
+          <tr>
             {data.map((d) => (
               <Link to={`/${d.id}`} key={d.market_cap_rank}>
-                <Tr>
-                  <Td>{d.market_cap_rank}</Td>
+                <tr>
+                  <td>{d.market_cap_rank}</td>
 
-                  <Td display="flex">
+                  <td display="flex">
                     <img src={d.image} width={20} />
                     {d.name}
-                  </Td>
+                  </td>
 
-                  <Td>$ {millify(d.high_24h)}</Td>
-                  <Td>${millify(d.current_price)}</Td>
-                  <Td>${millify(d.market_cap)}</Td>
-                </Tr>
+                  <td>$ {millify(d.high_24h)}</td>
+                  <td>${millify(d.current_price)}</td>
+                  <td>${millify(d.market_cap)}</td>
+                </tr>
               </Link>
             ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+          </tr>
+        </table>
+      </div>
     </>
   );
 }
