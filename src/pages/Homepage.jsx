@@ -9,6 +9,7 @@ import "../App.css";
 
 function Homepage() {
   const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 
@@ -23,9 +24,25 @@ function Homepage() {
         console.log(error);
       });
   }, []);
+
+  const filteredData = () => {
+    if (!searchTerm) {
+      return data;
+    } else {
+      return data.filter((coin) =>
+        coin.name.toLowerCase().startsWith(searchTerm)
+      );
+    }
+  };
   return (
     <div className="container">
       <div>
+        <div className="search-bar">
+          <input
+            type={"text"}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <div className="heading">
           <p>#</p>
           <p>Coin</p>
@@ -34,23 +51,21 @@ function Homepage() {
           <p>Mkt Cap</p>
         </div>
 
-        <div className="coin-row">
-          <div>
-            {data.map((d) => (
-              <Link to={`/${d.id}`} key={d.market_cap_rank}>
-                <p>{d.market_cap_rank}</p>
+        <div>
+          {filteredData().map((d) => (
+            <Link to={`/${d.id}`} key={d.market_cap_rank} className="coin-row">
+              <p>{d.market_cap_rank}</p>
 
-                <p>
-                  <img src={d.image} width={20} />
-                  {d.name}
-                </p>
+              <p>
+                <img src={d.image} width={20} />
+                {d.name}
+              </p>
 
-                <p>$ {millify(d.high_24h)}</p>
-                <p>${millify(d.current_price)}</p>
-                <p>${millify(d.market_cap)}</p>
-              </Link>
-            ))}
-          </div>
+              <p>$ {millify(d.high_24h)}</p>
+              <p>${millify(d.current_price)}</p>
+              <p>${millify(d.market_cap)}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
