@@ -29,11 +29,11 @@ body{
     padding: .7rem 1rem;
 }
 
-/* .coin-row:hover{
+.coin-row:hover{
     transform: scale(1.04);
     transition: .3s ease-in-out;
     cursor: pointer;
-} */
+}
 .details{
   display: flex;
     flex-direction: row;
