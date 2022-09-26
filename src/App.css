@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&family=Roboto:wght@300;500&display=swap');
 body{
   background: #18191b;
 }
 .container{
     max-width: 1140px;
     margin: auto;
+    position: relative;
 }
 .heading{
     display: flex;
@@ -15,7 +17,24 @@ body{
     border-radius: 8px;
     margin: 2rem 1rem;
     padding: .7rem 1rem;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+.search-bar{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #26272b;
+  height: 50px;
+}
+.search-bar input{
+  width: 300px;
+  height: 30px;
+  background: #26272b;
+  color: white
 }
 .coin-row{
     display: flex;
@@ -27,8 +46,22 @@ body{
     border-radius: 8px;
     margin: 2rem 1rem;
     padding: .7rem 1rem;
+    text-decoration: none;
 }
-
+.coin-row p{
+  color:white;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+.coin-name-and-logo{
+  display: flex;
+  align-items: center;
+}
+.coin-name-and-logo img{
+  width: 40px;
+  margin-right: 5px;
+}
 .coin-row:hover{
     transform: scale(1.04);
     transition: .3s ease-in-out;
@@ -44,12 +77,15 @@ body{
     border-radius: 8px;
     margin: 2rem 1rem;
     padding: .7rem 1rem;
+    font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 .details p{
   color: white;
 }
 @media screen and (max-width:720px){
-    .hide-mobile{
-        display: none;
+   
+    .details{
+      width: 100%;
     }
 }
