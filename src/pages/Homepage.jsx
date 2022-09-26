@@ -40,6 +40,7 @@ function Homepage() {
         <div className="search-bar">
           <input
             type={"text"}
+            placeholder="search"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
@@ -56,10 +57,10 @@ function Homepage() {
             <Link to={`/${d.id}`} key={d.market_cap_rank} className="coin-row">
               <p>{d.market_cap_rank}</p>
 
-              <p>
-                <img src={d.image} width={20} />
-                {d.name}
-              </p>
+              <div className="coin-name-and-logo">
+                <img src={d.image} />
+                <p>{d.name}</p>
+              </div>
 
               <p>$ {millify(d.high_24h)}</p>
               <p>${millify(d.current_price)}</p>
