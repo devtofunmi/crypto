@@ -37,7 +37,7 @@ const CoinDetails = () => {
           <p>Score : {coin.coingecko_score}</p>
           <p>Price:{coin.market_data.current_price.usd}</p>
           <p>24hr high:{coin.market_data.high_24h.usd}</p>
-          {millify(d.high_24h)}
+
           <p>24hr low:{coin.market_data.low_24h.usd}</p>
           <p>Mkt:{coin.market_data.market_cap.usd}</p>
           <p>Description:{coin.description.en}</p>
