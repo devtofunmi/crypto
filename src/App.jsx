@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/:coin" element={<CoinDetails />} />
-          <Route path="/:favcoin" element={<Fav />} />
+          <Route path="/favcoin" element={<Fav />} />
         </Routes>
       </Router>
     </>
