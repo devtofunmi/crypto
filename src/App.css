@@ -20,6 +20,9 @@ body{
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
 }
+.navv{
+  width: 100%;
+}
 .bar{
   display: flex;
   justify-content: space-between;
@@ -92,6 +95,8 @@ body{
 .btn{
   cursor: pointer;
   outline: none;
+  background-color: transparent;
+  border: none;
 }
 .details{
   display: flex;
@@ -117,4 +122,18 @@ body{
     .hide{
       display: none;
     }
+}
+@media screen and (max-width:517px){
+   
+   
+    .bar{
+  display: flex;
+  justify-content: space-between;
+}
+.search-bar input{
+  width: 120px;
+  height: 30px;
+  background: #26272b;
+  color: white
+}
 }
