@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import millify from "millify";
 import "../App.css";
+import ReactHtmlParser from "react-html-parser";
 
 const CoinDetails = () => {
   const [coin, setCoin] = useState({});
@@ -40,7 +41,7 @@ const CoinDetails = () => {
 
           <p>24hr low:{coin.market_data.low_24h.usd}</p>
           <p>Mkt:{coin.market_data.market_cap.usd}</p>
-          <p>Description:{coin.description.en}</p>
+          <p>Description:{ReactHtmlParser(coin.description.en)}</p>
         </div>
       )}
     </div>
