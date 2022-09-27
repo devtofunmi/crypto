@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
-import CoinDetails from "./CoinDetails";
 import "../App.css";
 
 function Homepage() {
@@ -60,15 +59,21 @@ function Homepage() {
   return (
     <div className="container">
       <div>
-        <div className="search-bar">
-          <input
-            type={"text"}
-            placeholder="search"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button>Fav</button>
+        <div className="bar">
+          <p>CryptoCoin</p>
+          <div className="search-bar">
+            <div>
+              <input
+                type={"text"}
+                placeholder="search"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <Link to={"./favcoin"}>
+              <button>Fav</button>
+            </Link>
+          </div>
         </div>
-
         <div className="heading">
           <p>#</p>
           <p>Coin</p>
