@@ -4,6 +4,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
+import {
+  BsBookmarkDashFill,
+  BsBookmarkPlusFill,
+  BsFillBookmarkCheckFill,
+  BsFillBookmarkPlusFill,
+} from "react-icons/bs";
 import "../App.css";
 
 function Homepage() {
@@ -57,10 +63,10 @@ function Homepage() {
   };
 
   return (
-    <div className="container">
-      <div>
+    <>
+      <div className="navv">
         <div className="bar">
-          <p>CryptoCoin</p>
+          <p>Cryppto</p>
           <div className="search-bar">
             <div>
               <input
@@ -70,55 +76,63 @@ function Homepage() {
               />
             </div>
             <Link to={"./favcoin"}>
-              <button>Fav</button>
+              <BsFillBookmarkCheckFill size={30} color="white" />
             </Link>
           </div>
         </div>
-        <div className="heading">
-          <p>#</p>
-          <p>Coin</p>
-          <p>Price</p>
-          <p className="hide">24hr</p>
-          <p className="hide">Mkt Cap</p>
-          <p>24hr %</p>
-          <p>Add to Fav</p>
-        </div>
-
+      </div>
+      <div className="container">
         <div>
-          {filteredData().map((d) => (
-            <div key={d.market_cap_rank} className="coin-row">
-              <p>{d.market_cap_rank}</p>
+          <div className="heading">
+            <p>#</p>
+            <p>Coin</p>
+            <p>Price</p>
+            <p className="hide">24hr</p>
+            <p className="hide">Mkt Cap</p>
+            <p>24hr %</p>
+            <p>Add to Fav</p>
+          </div>
 
-              <Link to={`/${d.id}`} className="coin-name-and-logo">
-                <img src={d.image} />
-                <p>{d.name}</p>
-              </Link>
+          <div>
+            {filteredData().map((d) => (
+              <div key={d.market_cap_rank} className="coin-row">
+                <p>{d.market_cap_rank}</p>
 
-              <p className="hide">$ {millify(d.high_24h)}</p>
-              <p>${millify(d.current_price)}</p>
-              <p className="hide">${millify(d.market_cap)}</p>
-              <p
-                style={{
-                  color:
-                    d.market_cap_change_percentage_24h < 1 ? "red" : "green",
-                }}
-              >
-                {millify(d.market_cap_change_percentage_24h)}
-              </p>
+                <Link to={`/${d.id}`} className="coin-name-and-logo">
+                  <img src={d.image} />
+                  <p>{d.name}</p>
+                </Link>
 
-              <button
-                className="btn"
-                onClick={() => {
-                  addToFav(d.id);
-                }}
-              >
-                {fav.includes(d.id) ? "Remove from fav" : "Add to Fav"}
-              </button>
-            </div>
-          ))}
+                <p className="hide">$ {millify(d.high_24h)}</p>
+                <p>${millify(d.current_price)}</p>
+                <p className="hide">${millify(d.market_cap)}</p>
+                <p
+                  style={{
+                    color:
+                      d.market_cap_change_percentage_24h < 1 ? "red" : "green",
+                  }}
+                >
+                  {millify(d.market_cap_change_percentage_24h)}
+                </p>
+
+                <button
+                  className="btn"
+                  onClick={() => {
+                    addToFav(d.id);
+                  }}
+                >
+                  {fav.includes(d.id) ? (
+                    <BsBookmarkDashFill color="white" size={30} />
+                  ) : (
+                    <BsFillBookmarkPlusFill color="white" size={30} />
+                  )}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
